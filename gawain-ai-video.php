@@ -6,7 +6,8 @@
  * Version: 0.1.0
  * Author: nogeass
  * Author URI: https://nogeass.com
- * License: MIT
+ * License: GPL-2.0-or-later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: gawain-ai-video
  * Domain Path: /languages
  * Requires at least: 5.8
@@ -48,11 +49,19 @@ final class Gawain_AI_Video {
     }
 
     public function init() {
+        // Always load admin (shows WooCommerce-missing notice if needed).
         new Gawain_Admin();
-        new Gawain_REST();
-        new Gawain_Storefront();
+
+        // REST + Storefront only when WooCommerce is active.
+        if ( class_exists( 'WooCommerce' ) ) {
+            new Gawain_REST();
+            new Gawain_Storefront();
+        }
     }
 
+    /**
+     * Activation — create DB table.  No remote calls here.
+     */
     public function activate() {
         global $wpdb;
         $charset_collate = $wpdb->get_charset_collate();
@@ -78,11 +87,34 @@ final class Gawain_AI_Video {
     }
 
     /**
-     * Get plugin option.
+     * Get a single plugin option.
+     *
+     * @param string $key     Option key inside the gawain_settings array.
+     * @param mixed  $default Default value.
+     * @return mixed
      */
     public static function get_option( $key, $default = '' ) {
         $options = get_option( 'gawain_settings', array() );
         return isset( $options[ $key ] ) ? $options[ $key ] : $default;
+    }
+
+    /**
+     * Whether the user has explicitly granted consent for external API calls.
+     *
+     * @return bool
+     */
+    public static function has_consent() {
+        return (bool) self::get_option( 'external_consent', false );
+    }
+
+    /**
+     * Whether external calls are allowed (consent ON).
+     * This does NOT require an API key — free-tier works without one.
+     *
+     * @return bool
+     */
+    public static function can_call_api() {
+        return self::has_consent();
     }
 }
 

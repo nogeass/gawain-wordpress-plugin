@@ -2,7 +2,6 @@
  * Gawain AI Video — Storefront Video Carousel
  *
  * Renders a horizontal video carousel on WooCommerce product pages.
- * Matches the Shopify theme extension's look and interaction.
  *
  * Features:
  * - Autoplay, loop, muted videos

@@ -2,13 +2,14 @@
  * Gawain AI Video — Admin JavaScript
  *
  * Handles product listing, video generation, deployment,
- * and status polling. Matches the Shopify embedded app UX.
+ * and status polling on the WooCommerce admin page.
  */
 (function () {
   'use strict';
 
   var REST_URL = gawainData.restUrl;
   var NONCE = gawainData.nonce;
+  var HAS_CONSENT = !!gawainData.hasConsent;
 
   var appEl = document.getElementById('gawain-app');
   if (!appEl) return;
@@ -215,6 +216,10 @@
   // --- Handlers ---
 
   function handleGenerate(productId) {
+    if (!HAS_CONSENT) {
+      showToast('外部処理が有効になっていません。設定タブで有効にしてください。', 'error');
+      return;
+    }
     generating = productId;
     renderProducts();
 
@@ -245,6 +250,10 @@
   }
 
   function handleDeploy(videoId) {
+    if (!HAS_CONSENT) {
+      showToast('外部処理が有効になっていません。設定タブで有効にしてください。', 'error');
+      return;
+    }
     deploying = videoId;
     renderVideos();
 
@@ -266,6 +275,10 @@
   }
 
   function handleUndeploy(videoId) {
+    if (!HAS_CONSENT) {
+      showToast('外部処理が有効になっていません。設定タブで有効にしてください。', 'error');
+      return;
+    }
     deploying = videoId;
     renderVideos();
 
