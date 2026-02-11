@@ -1,0 +1,175 @@
+/* Gawain AI Video — Storefront Carousel
+ * Matches the Shopify theme extension's video carousel appearance.
+ */
+
+.gawain-video-section {
+    margin: 32px 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.gawain-storefront-heading {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #333;
+    letter-spacing: -0.01em;
+}
+
+.gawain-storefront-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+}
+
+.gawain-storefront-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+
+.gawain-storefront-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.gawain-storefront-scroll::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 2px;
+}
+
+.gawain-storefront-grid {
+    display: flex;
+    gap: 16px;
+    min-width: min-content;
+}
+
+.gawain-storefront-card {
+    flex-shrink: 0;
+    width: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    background: #000;
+    position: relative;
+}
+
+.gawain-storefront-card video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+}
+
+/* Overlay controls */
+.gawain-storefront-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    pointer-events: none;
+}
+
+.gawain-storefront-overlay button {
+    pointer-events: auto;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+    padding: 0;
+}
+
+.gawain-storefront-overlay button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Title bar */
+.gawain-storefront-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 8px 12px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Fullscreen modal */
+.gawain-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: gawain-modal-in 0.2s ease;
+}
+
+.gawain-modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.gawain-modal-content video {
+    max-width: 90vw;
+    max-height: 85vh;
+    border-radius: 8px;
+}
+
+.gawain-modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+}
+
+.gawain-modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes gawain-modal-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Noscript */
+.gawain-noscript {
+    padding: 16px;
+    background: #f9fafb;
+    border-radius: 8px;
+    color: #666;
+    text-align: center;
+    font-size: 14px;
+}

@@ -1,0 +1,460 @@
+/* Gawain AI Video — Admin Styles
+ * Matches the Shopify embedded app UI (clean, card-based, horizontal scroll)
+ */
+
+.gawain-wrap {
+    max-width: 100%;
+    margin: 20px 20px 20px 0;
+}
+
+.gawain-header {
+    margin-bottom: 24px;
+}
+
+.gawain-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 4px;
+}
+
+.gawain-subtitle {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+
+.gawain-tabs {
+    margin-bottom: 24px;
+}
+
+/* Section */
+.gawain-section {
+    margin-bottom: 32px;
+}
+
+.gawain-section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 12px;
+}
+
+/* Horizontal scroll container */
+.gawain-scroll-container {
+    overflow-x: auto;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.gawain-scroll-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.gawain-scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.gawain-scroll-container::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+/* Product grid (horizontal) */
+.gawain-product-grid,
+.gawain-video-grid {
+    display: flex;
+    gap: 16px;
+    min-width: min-content;
+}
+
+/* Product card */
+.gawain-product-card {
+    width: 176px;
+    flex-shrink: 0;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+}
+
+.gawain-product-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.gawain-product-thumb {
+    aspect-ratio: 1;
+    background: #f3f4f6;
+    position: relative;
+    overflow: hidden;
+}
+
+.gawain-product-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gawain-product-thumb .gawain-no-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-size: 12px;
+}
+
+.gawain-product-badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 99px;
+}
+
+.gawain-badge-active {
+    background: #3b82f6;
+}
+
+.gawain-badge-count {
+    background: #22c55e;
+}
+
+.gawain-product-info {
+    padding: 12px;
+}
+
+.gawain-product-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4;
+}
+
+.gawain-product-price {
+    font-size: 12px;
+    color: #6b7280;
+    margin: 0 0 8px;
+}
+
+/* Buttons */
+.gawain-btn {
+    width: 100%;
+    padding: 6px 8px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s, opacity 0.15s;
+    text-align: center;
+    display: block;
+}
+
+.gawain-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.gawain-btn-primary {
+    background: #2563eb;
+    color: #fff;
+}
+
+.gawain-btn-primary:hover:not(:disabled) {
+    background: #1d4ed8;
+}
+
+.gawain-btn-secondary {
+    background: #f9fafb;
+    color: #4b5563;
+    border: 1px solid #e5e7eb;
+}
+
+.gawain-btn-secondary:hover:not(:disabled) {
+    background: #f3f4f6;
+}
+
+.gawain-btn-success {
+    background: #16a34a;
+    color: #fff;
+}
+
+.gawain-btn-success:hover:not(:disabled) {
+    background: #15803d;
+}
+
+.gawain-btn-danger {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+    font-size: 10px;
+    padding: 4px 8px;
+}
+
+.gawain-btn-danger:hover:not(:disabled) {
+    background: #fee2e2;
+}
+
+.gawain-btn-deployed {
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+    cursor: default;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Video card */
+.gawain-video-card {
+    width: 160px;
+    flex-shrink: 0;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.gawain-video-preview {
+    aspect-ratio: 9 / 16;
+    background: #111;
+    position: relative;
+    overflow: hidden;
+}
+
+.gawain-video-preview video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.gawain-video-preview .gawain-play-link {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.15s;
+}
+
+.gawain-video-preview .gawain-play-link:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Progress overlay */
+.gawain-progress-overlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 8px;
+}
+
+.gawain-spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #fff;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: gawain-spin 0.8s linear infinite;
+    margin-bottom: 8px;
+}
+
+@keyframes gawain-spin {
+    to { transform: rotate(360deg); }
+}
+
+.gawain-progress-text {
+    font-size: 11px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.gawain-progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    margin-top: 8px;
+}
+
+.gawain-progress-fill {
+    height: 100%;
+    background: #fff;
+    border-radius: 2px;
+    transition: width 0.5s ease;
+}
+
+.gawain-progress-phase {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 4px;
+    text-align: center;
+}
+
+/* Failed state */
+.gawain-failed-overlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(127, 29, 29, 0.8);
+    color: #fff;
+    font-size: 13px;
+}
+
+/* Video info */
+.gawain-video-info {
+    padding: 12px;
+}
+
+.gawain-video-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.gawain-video-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.gawain-video-actions-row {
+    display: flex;
+    gap: 8px;
+}
+
+.gawain-video-actions-row .gawain-btn {
+    flex: 1;
+}
+
+.gawain-video-actions-row .gawain-btn-icon {
+    flex: 0 0 auto;
+    width: 32px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f4f6;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: #4b5563;
+    transition: background 0.15s;
+}
+
+.gawain-video-actions-row .gawain-btn-icon:hover {
+    background: #e5e7eb;
+}
+
+/* Settings form */
+.gawain-settings-form {
+    max-width: 700px;
+}
+
+/* Toast */
+.gawain-toast-container {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.gawain-toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-size: 13px;
+    font-weight: 500;
+    max-width: 360px;
+    animation: gawain-toast-in 0.2s ease;
+}
+
+.gawain-toast-success {
+    background: #16a34a;
+    color: #fff;
+}
+
+.gawain-toast-error {
+    background: #dc2626;
+    color: #fff;
+}
+
+.gawain-toast-info {
+    background: #1f2937;
+    color: #fff;
+}
+
+.gawain-toast-close {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+    line-height: 1;
+}
+
+.gawain-toast-close:hover {
+    color: #fff;
+}
+
+@keyframes gawain-toast-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Empty state */
+.gawain-empty {
+    text-align: center;
+    padding: 48px 0;
+    color: #6b7280;
+}
+
+.gawain-empty p {
+    margin: 4px 0;
+}
