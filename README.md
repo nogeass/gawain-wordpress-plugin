@@ -7,7 +7,7 @@ AI-powered promotional video generation for WooCommerce products.
 - Generate AI promotional videos from product images
 - Video carousel widget on product pages (shortcode + WooCommerce hook)
 - Admin dashboard to manage video generation, deployment, and deletion
-- Same video quality and pipeline as the [Shopify plugin](https://github.com/nogeass/gawain-shopify-plugin)
+
 
 ## Requirements
 
