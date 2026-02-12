@@ -41,6 +41,14 @@ Videos are automatically displayed below the product description on WooCommerce 
 
 This plugin sends product data to `gawain.nogeass.com` for AI video generation. No data is sent until the administrator explicitly enables "External processing" in settings. See [readme.txt](readme.txt) for full disclosure.
 
+## Building the Submission ZIP
+
+```bash
+./scripts/build-zip.sh
+```
+
+This produces `gawain-wordpress-plugin.zip` in the repo root, ready for WordPress.org upload.
+
 ## License
 
 This plugin is licensed under **GPLv2 or later**, in line with the WordPress.org plugin directory requirements.

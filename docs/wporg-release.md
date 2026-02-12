@@ -50,13 +50,10 @@ This plugin communicates with `gawain.nogeass.com` for AI video generation.
 ## Build & Release
 
 ```bash
-# Create release zip (exclude dev files)
-zip -r gawain-ai-video.zip gawain-ai-video/ \
-  -x "gawain-ai-video/.git/*" \
-  -x "gawain-ai-video/docs/*" \
-  -x "gawain-ai-video/node_modules/*" \
-  -x "gawain-ai-video/.DS_Store"
+./scripts/build-zip.sh
 ```
+
+This produces `gawain-wordpress-plugin.zip` with validation (no dotfiles, languages/ present).
 
 ## Submission
 
