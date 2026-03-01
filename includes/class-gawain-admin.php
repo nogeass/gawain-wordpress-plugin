@@ -72,10 +72,11 @@ class Gawain_Admin {
         wp_enqueue_script(
             'gawain-admin',
             GAWAIN_PLUGIN_URL . 'assets/js/admin.js',
-            array(),
+            array( 'wp-i18n' ),
             GAWAIN_VERSION,
             true
         );
+        wp_set_script_translations( 'gawain-admin', 'gawain-ai-video', GAWAIN_PLUGIN_DIR . 'languages' );
 
         wp_localize_script( 'gawain-admin', 'gawainData', array(
             'restUrl'    => esc_url_raw( rest_url( 'gawain/v1/' ) ),

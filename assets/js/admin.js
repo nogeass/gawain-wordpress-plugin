@@ -7,6 +7,8 @@
 (function () {
   'use strict';
 
+  var __ = wp.i18n.__;
+
   var REST_URL = gawainData.restUrl;
   var NONCE = gawainData.nonce;
   var HAS_CONSENT = !!gawainData.hasConsent;
@@ -84,7 +86,7 @@
     if (!container) return;
 
     if (products.length === 0) {
-      container.innerHTML = '<div class="gawain-empty"><p>商品が見つかりません</p><p style="font-size:13px">WooCommerceで商品を追加してください。</p></div>';
+      container.innerHTML = '<div class="gawain-empty"><p>' + escapeHtml(__('No products found', 'gawain-ai-video')) + '</p><p style="font-size:13px">' + escapeHtml(__('Please add products in WooCommerce.', 'gawain-ai-video')) + '</p></div>';
       return;
     }
 
@@ -97,25 +99,28 @@
 
       var badge = '';
       if (hasActive) {
-        badge = '<div class="gawain-product-badge gawain-badge-active">生成中</div>';
+        badge = '<div class="gawain-product-badge gawain-badge-active">' + escapeHtml(__('Generating', 'gawain-ai-video')) + '</div>';
       } else if (videoCount > 0) {
-        badge = '<div class="gawain-product-badge gawain-badge-count">' + videoCount + '本</div>';
+        /* translators: %d: number of videos */
+        badge = '<div class="gawain-product-badge gawain-badge-count">' + videoCount + '</div>';
       }
 
       var thumb = p.thumb
         ? '<img src="' + escapeAttr(p.thumb) + '" alt="' + escapeAttr(p.title) + '">'
-        : '<div class="gawain-no-image">画像なし</div>';
+        : '<div class="gawain-no-image">' + escapeHtml(__('No image', 'gawain-ai-video')) + '</div>';
 
       var price = p.price ? '<p class="gawain-product-price">&yen;' + Number(p.price).toLocaleString() + '</p>' : '';
 
       var btn;
       if (!p.image) {
-        btn = '<span style="font-size:10px;color:#9ca3af;text-align:center;display:block">画像なし</span>';
+        btn = '<span style="font-size:10px;color:#9ca3af;text-align:center;display:block">' + escapeHtml(__('No image', 'gawain-ai-video')) + '</span>';
       } else {
         var disabled = generating === p.id || hasActive ? ' disabled' : '';
         var cls = hasVideo ? 'gawain-btn gawain-btn-secondary' : 'gawain-btn gawain-btn-primary';
-        var label = generating === p.id ? '開始中...' : (hasVideo ? '動画を再生成する' : '動画を生成する');
-        btn = '<button class="' + cls + '" data-generate="' + escapeAttr(p.id) + '"' + disabled + '>' + label + '</button>';
+        var label = generating === p.id
+          ? __('Starting...', 'gawain-ai-video')
+          : (hasVideo ? __('Regenerate Video', 'gawain-ai-video') : __('Generate Video', 'gawain-ai-video'));
+        btn = '<button class="' + cls + '" data-generate="' + escapeAttr(p.id) + '"' + disabled + '>' + escapeHtml(label) + '</button>';
       }
 
       return '<div class="gawain-product-card">'
@@ -151,15 +156,17 @@
           + '<a class="gawain-play-link" href="' + escapeAttr(v.previewUrl) + '" target="_blank" rel="noopener">'
           + '<svg width="14" height="14" viewBox="0 0 16 16" fill="white"><path d="M4 2l10 6-10 6V2z"/></svg></a>';
       } else if (v.status === 'failed') {
-        preview = '<div class="gawain-failed-overlay">生成に失敗しました</div>';
+        preview = '<div class="gawain-failed-overlay">' + escapeHtml(__('Generation failed', 'gawain-ai-video')) + '</div>';
       } else {
-        var phase = v.progress < 30 ? '3D生成中' : (v.progress < 70 ? '動画作成中' : '仕上げ中');
+        var phase = v.progress < 30
+          ? __('Generating 3D', 'gawain-ai-video')
+          : (v.progress < 70 ? __('Creating video', 'gawain-ai-video') : __('Finalizing', 'gawain-ai-video'));
         preview = '<div class="gawain-progress-overlay">'
           + '<div class="gawain-spinner"></div>'
-          + '<span class="gawain-progress-text">' + (v.status === 'pending' ? '順番待ち...' : v.progress + '%') + '</span>'
+          + '<span class="gawain-progress-text">' + (v.status === 'pending' ? escapeHtml(__('Queued...', 'gawain-ai-video')) : v.progress + '%') + '</span>'
           + '<div class="gawain-progress-bar"><div class="gawain-progress-fill" style="width:' + v.progress + '%"></div></div>'
-          + '<p class="gawain-progress-phase">' + phase + '</p>'
-          + '<button class="gawain-btn gawain-btn-danger" data-delete="' + escapeAttr(v.videoId) + '" style="margin-top:8px;width:auto;background:transparent;border:none;color:rgba(255,255,255,0.6);font-size:10px;text-decoration:underline">キャンセル</button>'
+          + '<p class="gawain-progress-phase">' + escapeHtml(phase) + '</p>'
+          + '<button class="gawain-btn gawain-btn-danger" data-delete="' + escapeAttr(v.videoId) + '" style="margin-top:8px;width:auto;background:transparent;border:none;color:rgba(255,255,255,0.6);font-size:10px;text-decoration:underline">' + escapeHtml(__('Cancel', 'gawain-ai-video')) + '</button>'
           + '</div>';
       }
 
@@ -167,24 +174,24 @@
       if (v.status === 'completed' && v.previewUrl) {
         if (v.deployed) {
           actions = '<div class="gawain-video-actions-row">'
-            + '<div class="gawain-btn gawain-btn-deployed">&#10003; 配置済み</div>'
+            + '<div class="gawain-btn gawain-btn-deployed">&#10003; ' + escapeHtml(__('Placed', 'gawain-ai-video')) + '</div>'
             + '<a class="gawain-btn-icon" href="' + escapeAttr(v.previewUrl) + '" target="_blank" rel="noopener">'
             + '<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2l10 6-10 6V2z"/></svg></a>'
             + '</div>'
-            + '<button class="gawain-btn gawain-btn-danger" data-undeploy="' + escapeAttr(v.videoId) + '">配置しない</button>';
+            + '<button class="gawain-btn gawain-btn-danger" data-undeploy="' + escapeAttr(v.videoId) + '">' + escapeHtml(__('Remove from site', 'gawain-ai-video')) + '</button>';
         } else {
           actions = '<div class="gawain-video-actions-row">'
-            + '<button class="gawain-btn gawain-btn-success" data-deploy="' + escapeAttr(v.videoId) + '">サイトに配置</button>'
+            + '<button class="gawain-btn gawain-btn-success" data-deploy="' + escapeAttr(v.videoId) + '">' + escapeHtml(__('Place on site', 'gawain-ai-video')) + '</button>'
             + '<a class="gawain-btn-icon" href="' + escapeAttr(v.previewUrl) + '" target="_blank" rel="noopener">'
             + '<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2l10 6-10 6V2z"/></svg></a>'
             + '</div>'
-            + '<button class="gawain-btn gawain-btn-danger" data-delete="' + escapeAttr(v.videoId) + '">削除</button>';
+            + '<button class="gawain-btn gawain-btn-danger" data-delete="' + escapeAttr(v.videoId) + '">' + escapeHtml(__('Delete', 'gawain-ai-video')) + '</button>';
         }
       } else if (v.status === 'failed') {
-        actions = '<button class="gawain-btn gawain-btn-danger" style="font-size:12px" data-retry="' + escapeAttr(v.videoId) + '">再生成する</button>'
-          + '<button class="gawain-btn gawain-btn-danger" data-delete="' + escapeAttr(v.videoId) + '">削除</button>';
+        actions = '<button class="gawain-btn gawain-btn-danger" style="font-size:12px" data-retry="' + escapeAttr(v.videoId) + '">' + escapeHtml(__('Retry', 'gawain-ai-video')) + '</button>'
+          + '<button class="gawain-btn gawain-btn-danger" data-delete="' + escapeAttr(v.videoId) + '">' + escapeHtml(__('Delete', 'gawain-ai-video')) + '</button>';
       } else if (v.status === 'pending' || v.status === 'processing') {
-        actions = '<button class="gawain-btn gawain-btn-secondary" data-delete="' + escapeAttr(v.videoId) + '">キャンセル</button>';
+        actions = '<button class="gawain-btn gawain-btn-secondary" data-delete="' + escapeAttr(v.videoId) + '">' + escapeHtml(__('Cancel', 'gawain-ai-video')) + '</button>';
       }
 
       return '<div class="gawain-video-card">'
@@ -217,7 +224,7 @@
 
   function handleGenerate(productId) {
     if (!HAS_CONSENT) {
-      showToast('外部処理が有効になっていません。設定タブで有効にしてください。', 'error');
+      showToast(__('External processing is not enabled. Please enable it in the Settings tab.', 'gawain-ai-video'), 'error');
       return;
     }
     generating = productId;
@@ -235,23 +242,24 @@
           previewUrl: null,
           deployed: false,
         });
-        showToast('「' + (data.productTitle || '') + '」の動画生成を開始しました', 'info');
+        /* translators: %s: product title */
+        showToast(wp.i18n.sprintf(__('Started generating video for "%s"', 'gawain-ai-video'), data.productTitle || ''), 'info');
         startPolling(data.jobId);
       } else {
-        showToast(data.message || '動画生成の開始に失敗しました', 'error');
+        showToast(data.message || __('Failed to start video generation', 'gawain-ai-video'), 'error');
       }
       renderProducts();
       renderVideos();
     }).catch(function () {
       generating = null;
-      showToast('動画生成の開始に失敗しました', 'error');
+      showToast(__('Failed to start video generation', 'gawain-ai-video'), 'error');
       renderProducts();
     });
   }
 
   function handleDeploy(videoId) {
     if (!HAS_CONSENT) {
-      showToast('外部処理が有効になっていません。設定タブで有効にしてください。', 'error');
+      showToast(__('External processing is not enabled. Please enable it in the Settings tab.', 'gawain-ai-video'), 'error');
       return;
     }
     deploying = videoId;
@@ -262,21 +270,21 @@
       if (data.success) {
         var v = videos.find(function (x) { return x.videoId === videoId; });
         if (v) v.deployed = true;
-        showToast('サイトに配置しました', 'success');
+        showToast(__('Placed on site', 'gawain-ai-video'), 'success');
       } else {
-        showToast(data.message || '配置に失敗しました', 'error');
+        showToast(data.message || __('Failed to place on site', 'gawain-ai-video'), 'error');
       }
       renderVideos();
     }).catch(function () {
       deploying = null;
-      showToast('配置に失敗しました', 'error');
+      showToast(__('Failed to place on site', 'gawain-ai-video'), 'error');
       renderVideos();
     });
   }
 
   function handleUndeploy(videoId) {
     if (!HAS_CONSENT) {
-      showToast('外部処理が有効になっていません。設定タブで有効にしてください。', 'error');
+      showToast(__('External processing is not enabled. Please enable it in the Settings tab.', 'gawain-ai-video'), 'error');
       return;
     }
     deploying = videoId;
@@ -287,14 +295,14 @@
       if (data.success) {
         var v = videos.find(function (x) { return x.videoId === videoId; });
         if (v) v.deployed = false;
-        showToast('配置を解除しました', 'info');
+        showToast(__('Removed from site', 'gawain-ai-video'), 'info');
       } else {
-        showToast(data.message || '配置解除に失敗しました', 'error');
+        showToast(data.message || __('Failed to remove from site', 'gawain-ai-video'), 'error');
       }
       renderVideos();
     }).catch(function () {
       deploying = null;
-      showToast('配置解除に失敗しました', 'error');
+      showToast(__('Failed to remove from site', 'gawain-ai-video'), 'error');
       renderVideos();
     });
   }
@@ -313,15 +321,15 @@
       deleting = null;
       if (data.success) {
         videos = videos.filter(function (v) { return v.videoId !== videoId; });
-        showToast('削除しました', 'info');
+        showToast(__('Deleted', 'gawain-ai-video'), 'info');
       } else {
-        showToast(data.message || '削除に失敗しました', 'error');
+        showToast(data.message || __('Failed to delete', 'gawain-ai-video'), 'error');
       }
       renderProducts();
       renderVideos();
     }).catch(function () {
       deleting = null;
-      showToast('削除に失敗しました', 'error');
+      showToast(__('Failed to delete', 'gawain-ai-video'), 'error');
       renderVideos();
     });
   }
@@ -353,7 +361,7 @@
           clearInterval(pollers[jobId]);
           delete pollers[jobId];
           if (data.status === 'completed') {
-            showToast('動画が完成しました', 'success');
+            showToast(__('Video generation complete', 'gawain-ai-video'), 'success');
           }
         }
       }).catch(function () {

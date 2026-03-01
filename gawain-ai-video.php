@@ -49,6 +49,12 @@ final class Gawain_AI_Video {
     }
 
     public function init() {
+        load_plugin_textdomain(
+            'gawain-ai-video',
+            false,
+            dirname( GAWAIN_PLUGIN_BASENAME ) . '/languages'
+        );
+
         // Always load admin (shows WooCommerce-missing notice if needed).
         new Gawain_Admin();
 

@@ -1,0 +1,43 @@
+{
+  "translation-revision-date": "2025-01-01 00:00+0900",
+  "generator": "hand",
+  "source": "assets/js/admin.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "messages",
+        "lang": "ja",
+        "plural-forms": "nplurals=1; plural=0;"
+      },
+      "No products found": ["商品が見つかりません"],
+      "Please add products in WooCommerce.": ["WooCommerceで商品を追加してください。"],
+      "Generating": ["生成中"],
+      "No image": ["画像なし"],
+      "Starting...": ["開始中..."],
+      "Regenerate Video": ["動画を再生成する"],
+      "Generate Video": ["動画を生成する"],
+      "Generation failed": ["生成に失敗しました"],
+      "Generating 3D": ["3D生成中"],
+      "Creating video": ["動画作成中"],
+      "Finalizing": ["仕上げ中"],
+      "Queued...": ["順番待ち..."],
+      "Cancel": ["キャンセル"],
+      "Placed": ["配置済み"],
+      "Remove from site": ["配置しない"],
+      "Place on site": ["サイトに配置"],
+      "Delete": ["削除"],
+      "Retry": ["再生成する"],
+      "External processing is not enabled. Please enable it in the Settings tab.": ["外部処理が有効になっていません。設定タブで有効にしてください。"],
+      "Started generating video for \"%s\"": ["「%s」の動画生成を開始しました"],
+      "Failed to start video generation": ["動画生成の開始に失敗しました"],
+      "Placed on site": ["サイトに配置しました"],
+      "Failed to place on site": ["配置に失敗しました"],
+      "Removed from site": ["配置を解除しました"],
+      "Failed to remove from site": ["配置解除に失敗しました"],
+      "Deleted": ["削除しました"],
+      "Failed to delete": ["削除に失敗しました"],
+      "Video generation complete": ["動画が完成しました"]
+    }
+  }
+}
