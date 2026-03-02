@@ -39,6 +39,23 @@
     min-width: min-content;
 }
 
+/* Alignment */
+.gawain-video-section[data-align="center"] .gawain-storefront-heading {
+    text-align: center;
+}
+
+.gawain-video-section[data-align="center"] .gawain-storefront-grid {
+    justify-content: center;
+}
+
+.gawain-video-section[data-align="right"] .gawain-storefront-heading {
+    text-align: right;
+}
+
+.gawain-video-section[data-align="right"] .gawain-storefront-grid {
+    justify-content: flex-end;
+}
+
 .gawain-storefront-card {
     flex-shrink: 0;
     width: 200px;

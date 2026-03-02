@@ -50,6 +50,11 @@ class Gawain_Storefront {
             wp_localize_script( 'gawain-storefront', 'gawainStorefront', array(
                 'apiBase' => esc_url_raw( rtrim( Gawain_AI_Video::get_option( 'api_url', 'https://gawain.nogeass.com' ), '/' ) ),
                 'site'    => sanitize_text_field( wp_parse_url( home_url(), PHP_URL_HOST ) ),
+                'i18n'    => array(
+                    'promotionalVideo' => __( 'Promotional Video', 'gawain-ai-video' ),
+                    'toggleMute'       => __( 'Toggle mute', 'gawain-ai-video' ),
+                    'fullscreen'       => __( 'Fullscreen', 'gawain-ai-video' ),
+                ),
             ) );
         }
     }
@@ -66,7 +71,9 @@ class Gawain_Storefront {
         if ( ! $product ) {
             return;
         }
-        echo '<div class="gawain-video-section" data-product-id="' . esc_attr( $product->get_id() ) . '"></div>';
+        $align = apply_filters( 'gawain_video_align', 'left', $product->get_id() );
+        $align = in_array( $align, array( 'left', 'center', 'right' ), true ) ? $align : 'left';
+        echo '<div class="gawain-video-section" data-product-id="' . esc_attr( $product->get_id() ) . '" data-align="' . esc_attr( $align ) . '"></div>';
     }
 
     /**
@@ -79,6 +86,7 @@ class Gawain_Storefront {
 
         $atts = shortcode_atts( array(
             'product_id' => '',
+            'align'      => 'left',
         ), $atts, 'gawain_videos' );
 
         $product_id = absint( $atts['product_id'] );
@@ -91,7 +99,8 @@ class Gawain_Storefront {
             return '';
         }
 
-        return '<div class="gawain-video-section" data-product-id="' . esc_attr( $product_id ) . '"></div>';
+        $align = in_array( $atts['align'], array( 'left', 'center', 'right' ), true ) ? $atts['align'] : 'left';
+        return '<div class="gawain-video-section" data-product-id="' . esc_attr( $product_id ) . '" data-align="' . esc_attr( $align ) . '"></div>';
     }
 
     private function page_has_shortcode() {
