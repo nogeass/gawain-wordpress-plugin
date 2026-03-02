@@ -1,0 +1,44 @@
+{
+  "translation-revision-date": "2025-01-01 00:00+0900",
+  "generator": "hand",
+  "source": "assets/js/admin.js",
+  "domain": "gawain-ai-video",
+  "locale_data": {
+    "gawain-ai-video": {
+      "": {
+        "domain": "gawain-ai-video",
+        "lang": "ko_KR",
+        "plural-forms": "nplurals=1; plural=0;"
+      },
+      "No products found": ["상품을 찾을 수 없습니다"],
+      "Please add products in WooCommerce.": ["WooCommerce에서 상품을 추가해 주세요."],
+      "Generating": ["생성 중"],
+      "%d videos": ["%d개"],
+      "No image": ["이미지 없음"],
+      "Starting...": ["시작 중..."],
+      "Regenerate Video": ["동영상 재생성"],
+      "Generate Video": ["동영상 생성"],
+      "Generation failed": ["생성에 실패했습니다"],
+      "Generating 3D": ["3D 생성 중"],
+      "Creating video": ["동영상 제작 중"],
+      "Finalizing": ["마무리 중"],
+      "Queued...": ["대기 중..."],
+      "Cancel": ["취소"],
+      "Placed": ["배치됨"],
+      "Remove from site": ["사이트에서 제거"],
+      "Place on site": ["사이트에 배치"],
+      "Delete": ["삭제"],
+      "Retry": ["재시도"],
+      "External processing is not enabled. Please enable it in the Settings tab.": ["외부 처리가 활성화되어 있지 않습니다. 설정 탭에서 활성화해 주세요."],
+      "Started generating video for \"%s\"": ["\"%s\" 동영상 생성을 시작했습니다"],
+      "Failed to start video generation": ["동영상 생성 시작에 실패했습니다"],
+      "Placed on site": ["사이트에 배치했습니다"],
+      "Failed to place on site": ["배치에 실패했습니다"],
+      "Removed from site": ["사이트에서 제거했습니다"],
+      "Failed to remove from site": ["제거에 실패했습니다"],
+      "Deleted": ["삭제했습니다"],
+      "Failed to delete": ["삭제에 실패했습니다"],
+      "Video generation complete": ["동영상 생성이 완료되었습니다"]
+    }
+  }
+}

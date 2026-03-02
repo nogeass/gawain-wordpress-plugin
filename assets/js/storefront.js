@@ -13,9 +13,8 @@
 (function () {
   'use strict';
 
-  var __ = wp.i18n.__;
-
   var config = window.gawainStorefront || {};
+  var i18n = config.i18n || {};
   var API_BASE = config.apiBase || 'https://gawain.nogeass.com';
   var SITE = config.site || window.location.hostname;
 
@@ -52,7 +51,7 @@
     // Heading
     var heading = document.createElement('h3');
     heading.className = 'gawain-storefront-heading';
-    heading.textContent = __('Promotional Video', 'gawain-ai-video');
+    heading.textContent = i18n.promotionalVideo || 'Promotional Video';
     container.appendChild(heading);
 
     // Scroll wrapper
@@ -88,7 +87,7 @@
 
       var muteBtn = document.createElement('button');
       muteBtn.innerHTML = ICON_MUTED;
-      muteBtn.setAttribute('aria-label', __('Toggle mute', 'gawain-ai-video'));
+      muteBtn.setAttribute('aria-label', i18n.toggleMute || 'Toggle mute');
       muteBtn.addEventListener('click', function (e) {
         e.stopPropagation();
         video.muted = !video.muted;
@@ -97,7 +96,7 @@
 
       var expandBtn = document.createElement('button');
       expandBtn.innerHTML = ICON_EXPAND;
-      expandBtn.setAttribute('aria-label', __('Fullscreen', 'gawain-ai-video'));
+      expandBtn.setAttribute('aria-label', i18n.fullscreen || 'Fullscreen');
       expandBtn.addEventListener('click', function (e) {
         e.stopPropagation();
         openModal(v.url, video.currentTime, video.muted);

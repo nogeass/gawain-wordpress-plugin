@@ -1,4 +1,4 @@
-# Japanese translation for Gawain AI Video.
+# Korean translation for Gawain AI Video.
 # Copyright (C) 2024 nogeass
 # This file is distributed under the GPLv2 or later.
 msgid ""
@@ -8,8 +8,8 @@ msgstr ""
 "POT-Creation-Date: 2025-01-01 00:00+0000\n"
 "PO-Revision-Date: 2025-01-01 00:00+0900\n"
 "Last-Translator: nogeass <info@nogeass.com>\n"
-"Language-Team: Japanese <ja@li.org>\n"
-"Language: ja\n"
+"Language-Team: Korean <ko@li.org>\n"
+"Language: ko_KR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,53 +21,53 @@ msgstr "Gawain AI Video"
 
 #: includes/class-gawain-admin.php
 msgid "WooCommerce is required but not active. Please install and activate WooCommerce."
-msgstr "WooCommerceが必要ですが、有効化されていません。WooCommerceをインストールして有効化してください。"
+msgstr "WooCommerce가 필요하지만 활성화되어 있지 않습니다. WooCommerce를 설치하고 활성화해 주세요."
 
 #: includes/class-gawain-admin.php
 msgid "You do not have permission to access this page."
-msgstr "このページにアクセスする権限がありません。"
+msgstr "이 페이지에 접근할 권한이 없습니다."
 
 #: includes/class-gawain-admin.php
 msgid "Generate AI promotional videos for your WooCommerce products."
-msgstr "WooCommerce商品のAIプロモーション動画を生成します。"
+msgstr "WooCommerce 상품의 AI 프로모션 동영상을 생성합니다."
 
 #: includes/class-gawain-admin.php
 msgid "Videos"
-msgstr "動画"
+msgstr "동영상"
 
 #: includes/class-gawain-admin.php
 msgid "Settings"
-msgstr "設定"
+msgstr "설정"
 
 #: includes/class-gawain-admin.php
 msgid "External Service"
-msgstr "外部サービス"
+msgstr "외부 서비스"
 
 #. translators: %s: service domain
 #: includes/class-gawain-admin.php
 msgid "This plugin sends product data to %s for AI video generation. No data is sent until you enable the toggle below and explicitly click \"Generate\"."
-msgstr "このプラグインは、AI動画生成のために商品データを %s に送信します。下のトグルを有効にして「生成」をクリックするまで、データは送信されません。"
+msgstr "이 플러그인은 AI 동영상 생성을 위해 상품 데이터를 %s 으로 전송합니다. 아래 토글을 활성화하고 \"생성\"을 클릭하기 전까지 데이터가 전송되지 않습니다."
 
 #: includes/class-gawain-admin.php
 msgid "Enable external processing"
-msgstr "外部処理を有効にする"
+msgstr "외부 처리 활성화"
 
 #: includes/class-gawain-admin.php
 msgid "I consent to sending product data to gawain.nogeass.com for video generation"
-msgstr "動画生成のために gawain.nogeass.com へ商品データを送信することに同意します"
+msgstr "동영상 생성을 위해 gawain.nogeass.com으로 상품 데이터를 전송하는 것에 동의합니다"
 
 #: includes/class-gawain-admin.php
 msgid "When OFF, no data is sent to any external server. Default: OFF."
-msgstr "OFFの場合、外部サーバーにデータは送信されません。デフォルト: OFF。"
+msgstr "OFF일 때 외부 서버로 데이터가 전송되지 않습니다. 기본값: OFF."
 
 #: includes/class-gawain-admin.php
 msgid "API Key"
-msgstr "APIキー"
+msgstr "API 키"
 
 #. translators: %s: link to service
 #: includes/class-gawain-admin.php
 msgid "Get your API key at %s. Optional — free preview (watermarked) works without a key."
-msgstr "APIキーは %s で取得できます。任意 — キーなしでも無料プレビュー（透かし入り）が利用できます。"
+msgstr "API 키는 %s 에서 받을 수 있습니다. 선택 사항 — 키 없이도 무료 미리보기(워터마크 포함)를 사용할 수 있습니다."
 
 #: includes/class-gawain-admin.php
 msgid "API URL"
@@ -75,192 +75,192 @@ msgstr "API URL"
 
 #: includes/class-gawain-admin.php
 msgid "Default value is correct for most users."
-msgstr "ほとんどのユーザーはデフォルト値のままで問題ありません。"
+msgstr "대부분의 사용자에게 기본값이 적합합니다."
 
 #: includes/class-gawain-admin.php
 msgid "Data Management"
-msgstr "データ管理"
+msgstr "데이터 관리"
 
 #: includes/class-gawain-admin.php
 msgid "Delete data on uninstall"
-msgstr "アンインストール時にデータを削除"
+msgstr "제거 시 데이터 삭제"
 
 #: includes/class-gawain-admin.php
 msgid "Remove all plugin settings and the video tracking table when the plugin is deleted"
-msgstr "プラグイン削除時にすべての設定と動画管理テーブルを削除します"
+msgstr "플러그인 삭제 시 모든 설정과 동영상 관리 테이블을 삭제합니다"
 
 #: includes/class-gawain-admin.php
 msgid "Save Settings"
-msgstr "設定を保存"
+msgstr "설정 저장"
 
 #: includes/class-gawain-admin.php
 msgid "WooCommerce is required. Please install and activate WooCommerce."
-msgstr "WooCommerceが必要です。WooCommerceをインストールして有効化してください。"
+msgstr "WooCommerce가 필요합니다. WooCommerce를 설치하고 활성화해 주세요."
 
 #. translators: %s: link to settings
 #: includes/class-gawain-admin.php
 msgid "External processing is disabled. Enable it in %s to generate videos."
-msgstr "外部処理が無効です。動画を生成するには %s で有効にしてください。"
+msgstr "외부 처리가 비활성화되어 있습니다. 동영상을 생성하려면 %s 에서 활성화해 주세요."
 
 #: includes/class-gawain-admin.php
 msgid "Products"
-msgstr "商品"
+msgstr "상품"
 
 #: includes/class-gawain-admin.php
 msgid "Generated Videos"
-msgstr "生成された動画"
+msgstr "생성된 동영상"
 
 #: includes/class-gawain-api.php
 msgid "External processing is not enabled. Please enable it in settings."
-msgstr "外部処理が有効になっていません。設定で有効にしてください。"
+msgstr "외부 처리가 활성화되어 있지 않습니다. 설정에서 활성화해 주세요."
 
 #: includes/class-gawain-api.php
 #: includes/class-gawain-rest.php
 msgid "External processing is not enabled."
-msgstr "外部処理が有効になっていません。"
+msgstr "외부 처리가 활성화되어 있지 않습니다."
 
 #: includes/class-gawain-rest.php
 msgid "Product not found."
-msgstr "商品が見つかりません。"
+msgstr "상품을 찾을 수 없습니다."
 
 #: includes/class-gawain-rest.php
 msgid "Product has no image."
-msgstr "商品に画像がありません。"
+msgstr "상품에 이미지가 없습니다."
 
 #: includes/class-gawain-rest.php
 msgid "Unexpected API response."
-msgstr "予期しないAPIレスポンスです。"
+msgstr "예상치 못한 API 응답입니다."
 
 #: includes/class-gawain-rest.php
 msgid "Video not found or not ready."
-msgstr "動画が見つからないか、まだ準備ができていません。"
+msgstr "동영상을 찾을 수 없거나 아직 준비되지 않았습니다."
 
 #: assets/js/admin.js
 msgid "No products found"
-msgstr "商品が見つかりません"
+msgstr "상품을 찾을 수 없습니다"
 
 #: assets/js/admin.js
 msgid "Please add products in WooCommerce."
-msgstr "WooCommerceで商品を追加してください。"
+msgstr "WooCommerce에서 상품을 추가해 주세요."
 
 #: assets/js/admin.js
 msgid "Generating"
-msgstr "生成中"
+msgstr "생성 중"
 
 #. translators: %d: number of videos
 #: assets/js/admin.js
 msgid "%d videos"
-msgstr "%d本"
+msgstr "%d개"
 
 #: assets/js/admin.js
 msgid "No image"
-msgstr "画像なし"
+msgstr "이미지 없음"
 
 #: assets/js/admin.js
 msgid "Starting..."
-msgstr "開始中..."
+msgstr "시작 중..."
 
 #: assets/js/admin.js
 msgid "Regenerate Video"
-msgstr "動画を再生成する"
+msgstr "동영상 재생성"
 
 #: assets/js/admin.js
 msgid "Generate Video"
-msgstr "動画を生成する"
+msgstr "동영상 생성"
 
 #: assets/js/admin.js
 msgid "Generation failed"
-msgstr "生成に失敗しました"
+msgstr "생성에 실패했습니다"
 
 #: assets/js/admin.js
 msgid "Generating 3D"
-msgstr "3D生成中"
+msgstr "3D 생성 중"
 
 #: assets/js/admin.js
 msgid "Creating video"
-msgstr "動画作成中"
+msgstr "동영상 제작 중"
 
 #: assets/js/admin.js
 msgid "Finalizing"
-msgstr "仕上げ中"
+msgstr "마무리 중"
 
 #: assets/js/admin.js
 msgid "Queued..."
-msgstr "順番待ち..."
+msgstr "대기 중..."
 
 #: assets/js/admin.js
 msgid "Cancel"
-msgstr "キャンセル"
+msgstr "취소"
 
 #: assets/js/admin.js
 msgid "Placed"
-msgstr "配置済み"
+msgstr "배치됨"
 
 #: assets/js/admin.js
 msgid "Remove from site"
-msgstr "配置しない"
+msgstr "사이트에서 제거"
 
 #: assets/js/admin.js
 msgid "Place on site"
-msgstr "サイトに配置"
+msgstr "사이트에 배치"
 
 #: assets/js/admin.js
 msgid "Delete"
-msgstr "削除"
+msgstr "삭제"
 
 #: assets/js/admin.js
 msgid "Retry"
-msgstr "再生成する"
+msgstr "재시도"
 
 #: assets/js/admin.js
 msgid "External processing is not enabled. Please enable it in the Settings tab."
-msgstr "外部処理が有効になっていません。設定タブで有効にしてください。"
+msgstr "외부 처리가 활성화되어 있지 않습니다. 설정 탭에서 활성화해 주세요."
 
 #. translators: %s: product title
 #: assets/js/admin.js
 msgid "Started generating video for \"%s\""
-msgstr "「%s」の動画生成を開始しました"
+msgstr "\"%s\" 동영상 생성을 시작했습니다"
 
 #: assets/js/admin.js
 msgid "Failed to start video generation"
-msgstr "動画生成の開始に失敗しました"
+msgstr "동영상 생성 시작에 실패했습니다"
 
 #: assets/js/admin.js
 msgid "Placed on site"
-msgstr "サイトに配置しました"
+msgstr "사이트에 배치했습니다"
 
 #: assets/js/admin.js
 msgid "Failed to place on site"
-msgstr "配置に失敗しました"
+msgstr "배치에 실패했습니다"
 
 #: assets/js/admin.js
 msgid "Removed from site"
-msgstr "配置を解除しました"
+msgstr "사이트에서 제거했습니다"
 
 #: assets/js/admin.js
 msgid "Failed to remove from site"
-msgstr "配置解除に失敗しました"
+msgstr "제거에 실패했습니다"
 
 #: assets/js/admin.js
 msgid "Deleted"
-msgstr "削除しました"
+msgstr "삭제했습니다"
 
 #: assets/js/admin.js
 msgid "Failed to delete"
-msgstr "削除に失敗しました"
+msgstr "삭제에 실패했습니다"
 
 #: assets/js/admin.js
 msgid "Video generation complete"
-msgstr "動画が完成しました"
+msgstr "동영상 생성이 완료되었습니다"
 
 #: includes/class-gawain-storefront.php
 msgid "Promotional Video"
-msgstr "プロモーション動画"
+msgstr "프로모션 동영상"
 
 #: includes/class-gawain-storefront.php
 msgid "Toggle mute"
-msgstr "ミュート切替"
+msgstr "음소거 전환"
 
 #: includes/class-gawain-storefront.php
 msgid "Fullscreen"
-msgstr "拡大表示"
+msgstr "전체 화면"

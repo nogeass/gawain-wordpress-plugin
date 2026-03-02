@@ -2,17 +2,18 @@
   "translation-revision-date": "2025-01-01 00:00+0900",
   "generator": "hand",
   "source": "assets/js/admin.js",
-  "domain": "messages",
+  "domain": "gawain-ai-video",
   "locale_data": {
-    "messages": {
+    "gawain-ai-video": {
       "": {
-        "domain": "messages",
+        "domain": "gawain-ai-video",
         "lang": "ja",
         "plural-forms": "nplurals=1; plural=0;"
       },
       "No products found": ["商品が見つかりません"],
       "Please add products in WooCommerce.": ["WooCommerceで商品を追加してください。"],
       "Generating": ["生成中"],
+      "%d videos": ["%d本"],
       "No image": ["画像なし"],
       "Starting...": ["開始中..."],
       "Regenerate Video": ["動画を再生成する"],

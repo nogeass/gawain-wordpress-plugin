@@ -19,6 +19,3 @@ jobs:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SLUG: gawain-ai-video
-          BUILD_DIR: false
-        with:
-          dry-run: false

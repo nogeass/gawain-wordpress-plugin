@@ -146,6 +146,11 @@ msgstr ""
 msgid "Generating"
 msgstr ""
 
+#. translators: %d: number of videos
+#: assets/js/admin.js
+msgid "%d videos"
+msgstr ""
+
 #: assets/js/admin.js
 msgid "No image"
 msgstr ""
@@ -247,14 +252,14 @@ msgstr ""
 msgid "Video generation complete"
 msgstr ""
 
-#: assets/js/storefront.js
+#: includes/class-gawain-storefront.php
 msgid "Promotional Video"
 msgstr ""
 
-#: assets/js/storefront.js
+#: includes/class-gawain-storefront.php
 msgid "Toggle mute"
 msgstr ""
 
-#: assets/js/storefront.js
+#: includes/class-gawain-storefront.php
 msgid "Fullscreen"
 msgstr ""

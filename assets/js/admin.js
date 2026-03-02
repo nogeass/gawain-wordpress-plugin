@@ -102,7 +102,7 @@
         badge = '<div class="gawain-product-badge gawain-badge-active">' + escapeHtml(__('Generating', 'gawain-ai-video')) + '</div>';
       } else if (videoCount > 0) {
         /* translators: %d: number of videos */
-        badge = '<div class="gawain-product-badge gawain-badge-count">' + videoCount + '</div>';
+        badge = '<div class="gawain-product-badge gawain-badge-count">' + escapeHtml(wp.i18n.sprintf(__('%d videos', 'gawain-ai-video'), videoCount)) + '</div>';
       }
 
       var thumb = p.thumb
@@ -317,7 +317,7 @@
       delete pollers[videoId];
     }
 
-    apiCall('POST', 'delete', { videoId: videoId }).then(function (data) {
+    return apiCall('POST', 'delete', { videoId: videoId }).then(function (data) {
       deleting = null;
       if (data.success) {
         videos = videos.filter(function (v) { return v.videoId !== videoId; });
@@ -327,18 +327,22 @@
       }
       renderProducts();
       renderVideos();
+      return data.success;
     }).catch(function () {
       deleting = null;
       showToast(__('Failed to delete', 'gawain-ai-video'), 'error');
       renderVideos();
+      return false;
     });
   }
 
   function handleRetry(videoId) {
     var v = videos.find(function (x) { return x.videoId === videoId; });
     if (!v) return;
-    handleDelete(videoId);
-    handleGenerate(v.productId);
+    var productId = v.productId;
+    handleDelete(videoId).then(function (success) {
+      if (success) handleGenerate(productId);
+    });
   }
 
   // --- Polling ---
