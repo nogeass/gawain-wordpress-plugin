@@ -3,7 +3,7 @@
  * Plugin Name: Gawain AI Video
  * Plugin URI: https://github.com/nogeass/gawain-wordpress-plugin
  * Description: AI-powered promotional video generation for WooCommerce products.
- * Version: 0.1.1
+ * Version: 0.1.2
  * Author: nogeass
  * Author URI: https://nogeass.com
  * License: GPLv2 or later
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'GAWAIN_VERSION', '0.1.1' );
+define( 'GAWAIN_VERSION', '0.1.2' );
 define( 'GAWAIN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GAWAIN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'GAWAIN_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );

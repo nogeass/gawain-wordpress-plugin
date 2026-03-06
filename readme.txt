@@ -3,7 +3,7 @@ Contributors: nogeass
 Tags: woocommerce, video, ai, promotional, product
 Requires at least: 5.8
 Tested up to: 6.9
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -13,6 +13,8 @@ Generate AI promotional videos from your WooCommerce product images — one clic
 == Description ==
 
 = Industry-First: AI Video That Preserves Your Brand Identity =
+
+[youtube https://www.youtube.com/watch?v=Q5cAoG0JBQY]
 
 Most video generation tools rely on generic templates or manual cut editing. They cannot maintain the unique look and feel of your brand products. **Gawain AI Video** is different — it generates promotional videos that **preserve the exact shape and appearance of your brand products**, creating one-of-a-kind promotional content automatically.
 
@@ -67,6 +69,8 @@ Commercial / ad-ready | Yes | Requires copyright verification
 = 日本語 =
 
 **【業界初】ブランドの形を保ったままプロモーション動画をAIが自動生成**
+
+[youtube https://www.youtube.com/watch?v=69pUP0AkN5E]
 
 従来の動画生成ツールの多くは、テンプレートへの当て込みや人手によるカット編集を前提としていました。そのため、ブランドが大切にしている商品の見せ方や世界観を維持することが困難でした。
 
@@ -223,6 +227,9 @@ Generated videos are hosted on the Gawain CDN (`cdn.gawain.nogeass.com`). The st
 
 == Changelog ==
 
+= 0.1.2 =
+* Added demo video embeds (EN/JA) to plugin description
+
 = 0.1.1 =
 * Enhanced plugin description with multilingual marketing content (EN, JA, KO, ZH)
 * Included translation files (.po, .mo, .json) in SVN deployment
@@ -236,6 +243,9 @@ Generated videos are hosted on the Gawain CDN (`cdn.gawain.nogeass.com`). The st
 * Uninstall handler with optional data deletion
 
 == Upgrade Notice ==
+
+= 0.1.2 =
+Added demo video embeds to plugin page.
 
 = 0.1.1 =
 Enhanced plugin description and translation file deployment fix.
