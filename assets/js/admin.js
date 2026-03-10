@@ -157,6 +157,11 @@
           + '<svg width="14" height="14" viewBox="0 0 16 16" fill="white"><path d="M4 2l10 6-10 6V2z"/></svg></a>';
       } else if (v.status === 'failed') {
         preview = '<div class="gawain-failed-overlay">' + escapeHtml(__('Generation failed', 'gawain-ai-video')) + '</div>';
+      } else if (v.status === 'timeout') {
+        preview = '<div class="gawain-failed-overlay" style="background:rgba(100,80,0,0.85)">'
+          + '<p style="font-size:13px;margin:0 0 8px">' + escapeHtml(__('Polling timeout', 'gawain-ai-video')) + '</p>'
+          + '<p style="font-size:11px;margin:0;opacity:0.8">' + escapeHtml(__('Server may still be processing', 'gawain-ai-video')) + '</p>'
+          + '</div>';
       } else {
         var phase = v.progress < 30
           ? __('Generating 3D', 'gawain-ai-video')
@@ -166,6 +171,7 @@
           + '<span class="gawain-progress-text">' + (v.status === 'pending' ? escapeHtml(__('Queued...', 'gawain-ai-video')) : v.progress + '%') + '</span>'
           + '<div class="gawain-progress-bar"><div class="gawain-progress-fill" style="width:' + v.progress + '%"></div></div>'
           + '<p class="gawain-progress-phase">' + escapeHtml(phase) + '</p>'
+          + '<p class="gawain-eta-note">' + escapeHtml(gawainData.i18n.etaNote) + '</p>'
           + '<button class="gawain-btn gawain-btn-danger" data-delete="' + escapeAttr(v.videoId) + '" style="margin-top:8px;width:auto;background:transparent;border:none;color:rgba(255,255,255,0.6);font-size:10px;text-decoration:underline">' + escapeHtml(__('Cancel', 'gawain-ai-video')) + '</button>'
           + '</div>';
       }
@@ -189,6 +195,10 @@
         }
       } else if (v.status === 'failed') {
         actions = '<button class="gawain-btn gawain-btn-danger" style="font-size:12px" data-retry="' + escapeAttr(v.videoId) + '">' + escapeHtml(__('Retry', 'gawain-ai-video')) + '</button>'
+          + '<button class="gawain-btn gawain-btn-danger" data-delete="' + escapeAttr(v.videoId) + '">' + escapeHtml(__('Delete', 'gawain-ai-video')) + '</button>';
+      } else if (v.status === 'timeout') {
+        actions = '<button class="gawain-btn gawain-btn-primary" style="font-size:12px" data-check="' + escapeAttr(v.videoId) + '">' + escapeHtml(__('Check status', 'gawain-ai-video')) + '</button>'
+          + '<button class="gawain-btn gawain-btn-danger" style="font-size:12px" data-retry="' + escapeAttr(v.videoId) + '">' + escapeHtml(__('Retry', 'gawain-ai-video')) + '</button>'
           + '<button class="gawain-btn gawain-btn-danger" data-delete="' + escapeAttr(v.videoId) + '">' + escapeHtml(__('Delete', 'gawain-ai-video')) + '</button>';
       } else if (v.status === 'pending' || v.status === 'processing') {
         actions = '<button class="gawain-btn gawain-btn-secondary" data-delete="' + escapeAttr(v.videoId) + '">' + escapeHtml(__('Cancel', 'gawain-ai-video')) + '</button>';
@@ -217,6 +227,9 @@
     });
     container.querySelectorAll('[data-retry]').forEach(function (btn) {
       btn.addEventListener('click', function () { handleRetry(btn.dataset.retry); });
+    });
+    container.querySelectorAll('[data-check]').forEach(function (btn) {
+      btn.addEventListener('click', function () { handleCheckStatus(btn.dataset.check); });
     });
   }
 
@@ -345,6 +358,36 @@
     });
   }
 
+  function handleCheckStatus(videoId) {
+    apiCall('GET', 'job/' + encodeURIComponent(videoId)).then(function (data) {
+      if (!data.status) {
+        showToast('ステータスを取得できませんでした', 'error');
+        return;
+      }
+      var v = videos.find(function (x) { return x.videoId === videoId; });
+      if (v) {
+        v.status = data.status;
+        v.progress = data.progress || v.progress;
+        if (data.previewUrl) v.previewUrl = data.previewUrl;
+        if (data.downloadUrl && !v.previewUrl) v.previewUrl = data.downloadUrl;
+        renderVideos();
+        renderProducts();
+      }
+      if (data.status === 'completed') {
+        showToast('動画が完成しています', 'success');
+      } else if (data.status === 'failed') {
+        showToast('生成に失敗しました', 'error');
+      } else if (data.status === 'processing') {
+        showToast('まだ処理中です。ポーリングを再開します', 'info');
+        startPolling(videoId);
+      } else {
+        showToast('ステータス: ' + data.status, 'info');
+      }
+    }).catch(function () {
+      showToast('ステータスの確認に失敗しました', 'error');
+    });
+  }
+
   // --- Polling ---
 
   function startPolling(jobId) {
@@ -369,18 +412,24 @@
           }
         }
       }).catch(function () {
-        clearInterval(pollers[jobId]);
-        delete pollers[jobId];
+        // Network error — don't kill polling, just skip this tick
       });
     }, 5000);
 
-    // Timeout after 10 minutes
+    // Timeout after 30 minutes (video generation can take 15+ min)
     setTimeout(function () {
       if (pollers[jobId]) {
         clearInterval(pollers[jobId]);
         delete pollers[jobId];
+        var v = videos.find(function (x) { return x.videoId === jobId; });
+        if (v && v.status !== 'completed' && v.status !== 'failed') {
+          v.status = 'timeout';
+          renderVideos();
+          renderProducts();
+          showToast('動画生成の応答がタイムアウトしました。「ステータス確認」で最新状態を確認できます。', 'error');
+        }
       }
-    }, 600000);
+    }, 1800000);
   }
 
   // --- Toast ---
