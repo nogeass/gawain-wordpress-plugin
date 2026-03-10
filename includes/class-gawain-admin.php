@@ -72,16 +72,18 @@ class Gawain_Admin {
         wp_enqueue_script(
             'gawain-admin',
             GAWAIN_PLUGIN_URL . 'assets/js/admin.js',
-            array( 'wp-i18n' ),
+            array(),
             GAWAIN_VERSION,
             true
         );
-        wp_set_script_translations( 'gawain-admin', 'gawain-ai-video', GAWAIN_PLUGIN_DIR . 'languages' );
 
         wp_localize_script( 'gawain-admin', 'gawainData', array(
             'restUrl'    => esc_url_raw( rest_url( 'gawain/v1/' ) ),
             'nonce'      => wp_create_nonce( 'wp_rest' ),
             'hasConsent' => Gawain_AI_Video::has_consent(),
+            'i18n'       => array(
+                'etaNote' => esc_html__( 'Video generation takes about 10 minutes. Please wait.', 'gawain-ai-video' ),
+            ),
         ) );
     }
 

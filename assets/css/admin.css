@@ -316,6 +316,13 @@
     text-align: center;
 }
 
+.gawain-eta-note {
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 6px;
+    text-align: center;
+}
+
 /* Failed state */
 .gawain-failed-overlay {
     width: 100%;
