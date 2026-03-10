@@ -126,6 +126,9 @@ class Gawain_REST {
             return new WP_Error( 'no_image', __( 'Product has no image.', 'gawain-ai-video' ), array( 'status' => 400 ) );
         }
 
+        // Allow URL rewriting for non-public WordPress installs (e.g. localhost).
+        $image_url = apply_filters( 'gawain_api_image_url', $image_url, $product_id );
+
         $api    = new Gawain_API();
         $result = $api->create_job(
             $product_id,
