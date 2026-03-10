@@ -158,6 +158,13 @@ class Gawain_Admin {
             <?php else : ?>
                 <?php $this->render_videos_tab(); ?>
             <?php endif; ?>
+
+            <section class="gawain-section" style="margin-top:32px">
+                <h2 class="gawain-section-title"><?php echo esc_html__( 'How to Use', 'gawain-ai-video' ); ?></h2>
+                <div class="gawain-video-embed">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/lAjCtXNn6Ho" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </section>
         </div>
         <?php
     }
