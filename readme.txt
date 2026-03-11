@@ -3,7 +3,7 @@ Contributors: nogeass
 Tags: woocommerce, video, ai, promotional, product
 Requires at least: 5.8
 Tested up to: 6.9
-Stable tag: 0.1.2
+Stable tag: 0.1.5
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -440,6 +440,11 @@ Terms of Service: [https://gawain.nogeass.com/terms](https://gawain.nogeass.com/
 
 == Changelog ==
 
+= 0.1.5 =
+* Added ETA note during video generation ("about 10 minutes")
+* Embedded tutorial YouTube video in admin page
+* Fixed product grid crash caused by wp-i18n dependency
+
 = 0.1.2 =
 * Added demo video embeds (EN/JA) to plugin description
 
@@ -456,6 +461,9 @@ Terms of Service: [https://gawain.nogeass.com/terms](https://gawain.nogeass.com/
 * Uninstall handler with optional data deletion
 
 == Upgrade Notice ==
+
+= 0.1.5 =
+Added ETA note, tutorial video embed, and fixed product grid rendering.
 
 = 0.1.2 =
 Enhanced plugin description with demo videos and detailed multilingual marketing content.
